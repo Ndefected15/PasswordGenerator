@@ -1,4 +1,64 @@
-// Assignment code here
+// Random Functions
+function getRandLower() {
+  var lower = "abcdefghijklmnopqrstuvwxyz";
+  return lower[Math.floor(Math.random() * lower.length)];
+}
+
+function getRandUpper() {
+  var upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  return upper[Math.floor(Math.random() * upper.length)];
+}
+
+function getRandNumber() {
+  var number = "0123456789";
+  return number[Math.floor(Math.random() * number.length)];
+}
+
+function getRandSymbol() {
+  var symbol = "!@#$%^&*()<>_-+=[]{}?.,`";
+  return symbol[Math.floor(Math.random() * symbol.length)];
+}
+
+// Prompts for password
+var lowerPrompt = function () {
+  var c = confirm("Would you like to include lower case characters?");
+
+  if (c == true) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+var upperPrompt = function () {
+  var c = confirm("Would you like to include upper case characters?");
+  if (c == true) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+var numberPrompt = function () {
+  var c = confirm("Would you like to include numbers?");
+  if (c == true) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+var characterPrompt = function () {
+  var c = confirm("Would you like to include symbols?");
+  if (c == true) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+// generate the password
+
 function generatePassword() {
   var lengthPrompt = window.prompt(
     "Choose Password length between 8 and 128 characters:"
