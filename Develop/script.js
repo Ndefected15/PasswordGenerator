@@ -1,25 +1,47 @@
+const randomFunc = {
+  lower: getRandLower,
+  upper: getRandUpper,
+  number: getRandNumber,
+  symbol: getRandSymbol,
+};
 // Random Functions
+
 function getRandLower() {
-  var lower = "abcdefghijklmnopqrstuvwxyz";
-  return lower[Math.floor(Math.random() * lower.length)];
+  return String.fromCharCode(Math.floor(Math.random() * 26) + 97);
 }
 
 function getRandUpper() {
-  var upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  return upper[Math.floor(Math.random() * upper.length)];
+  return String.fromCharCode(Math.floor(Math.random() * 26) + 65);
 }
 
 function getRandNumber() {
-  var number = "0123456789";
-  return number[Math.floor(Math.random() * number.length)];
+  return String.fromCharCode(Math.floor(Math.random() * 10) + 48);
 }
 
 function getRandSymbol() {
-  var symbol = "!@#$%^&*()<>_-+=[]{}?.,`";
-  return symbol[Math.floor(Math.random() * symbol.length)];
+  const symbols = "!@#$%^&*()<>_-+=[]{}?.,`";
+  return symbols[Math.floor(Math.random() * symbols.length)];
 }
 
 // Prompts for password
+
+var getPassLength = function () {
+  var passwordLength = "";
+  var parseLength;
+
+  while (passwordLength == "" || passwordLength == null) {
+    passwordLength - prompt("Enter number between 8 and 128 for password length")
+  }
+  parseLength = parseInt(passwordLength);
+  if (parseLength > 7 && parseLength < 129) {
+    return parseLength
+  }
+  else {
+    window.alert("Invalid range, please try again");
+    getPassLength();
+  }
+};
+
 var lowerPrompt = function () {
   var c = confirm("Would you like to include lower case characters?");
 
@@ -60,22 +82,55 @@ var characterPrompt = function () {
 // generate the password
 
 function generatePassword() {
-  var lengthPrompt = window.prompt(
-    "Choose Password length between 8 and 128 characters:"
-  );
-
+  var length = getPassLength();
+  var lowerPrompt = lowerPrompt();
+  var upperPrompt = upperPrompt();
+  var numberPrompt = numberPrompt();
+  var symbolPrompt = symbolPrompt();
+  let password = "";
   if (
-    lengthPrompt === "" ||
-    lengthPrompt === null ||
-    lengthPrompt > 128 ||
-    lengthPrompt < 8
+    lowerPrompt == false &&
+    upperPrompt == false &&
+    numberPrompt == false &&
+    symbolPrompt == false
   ) {
-    window.alert("You need to enter a number between 8 and 128. Try Again.");
-    return generatePassword();
+    return (password = "Please choose at least one charachter type.");
   } else {
-    return lengthPrompt;
-  }
-}
+    while (password.length < length) {
+      var getType = Math.floor(Math.random() * 4)
+      switch (getType) {
+        case 1:
+          if (lowerPrompt == true) {
+            password += getRandLower();
+          }
+          break;
+          case 2:
+            if (upperPrompt == true) {
+              password += getRandUpper();
+            }
+            break;
+            case 3:
+              if (numberPrompt == true) {
+                password += getRandNumber();
+              }
+              break;
+              case 0:
+                if (symbolPrompt == true) {
+                  password += getRandSymbol();
+                }
+                break;
+                default:
+                  console.log("error");
+              ]
+          
+    
+          }
+        
+      }
+      
+
+    }
+ 
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
