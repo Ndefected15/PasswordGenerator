@@ -1,9 +1,3 @@
-const randomFunc = {
-  lower: getRandLower,
-  upper: getRandUpper,
-  number: getRandNumber,
-  symbol: getRandSymbol,
-};
 // Random Functions
 
 function getRandLower() {
@@ -30,13 +24,14 @@ var getPassLength = function () {
   var parseLength;
 
   while (passwordLength == "" || passwordLength == null) {
-    passwordLength - prompt("Enter number between 8 and 128 for password length")
+    passwordLength = prompt(
+      "Enter number between 8 and 128 for password length"
+    );
   }
   parseLength = parseInt(passwordLength);
   if (parseLength > 7 && parseLength < 129) {
-    return parseLength
-  }
-  else {
+    return parseLength;
+  } else {
     window.alert("Invalid range, please try again");
     getPassLength();
   }
@@ -70,7 +65,7 @@ var numberPrompt = function () {
   }
 };
 
-var characterPrompt = function () {
+var symbolPrompt = function () {
   var c = confirm("Would you like to include symbols?");
   if (c == true) {
     return true;
@@ -83,54 +78,44 @@ var characterPrompt = function () {
 
 function generatePassword() {
   var length = getPassLength();
-  var lowerPrompt = lowerPrompt();
-  var upperPrompt = upperPrompt();
-  var numberPrompt = numberPrompt();
-  var symbolPrompt = symbolPrompt();
+  var lower = lowerPrompt();
+  var upper = upperPrompt();
+  var number = numberPrompt();
+  var symbol = symbolPrompt();
   let password = "";
-  if (
-    lowerPrompt == false &&
-    upperPrompt == false &&
-    numberPrompt == false &&
-    symbolPrompt == false
-  ) {
+  if (lower == false && upper == false && number == false && symbol == false) {
     return (password = "Please choose at least one charachter type.");
   } else {
     while (password.length < length) {
-      var getType = Math.floor(Math.random() * 4)
+      var getType = Math.floor(Math.random() * 4);
       switch (getType) {
         case 1:
-          if (lowerPrompt == true) {
+          if (lower == true) {
             password += getRandLower();
           }
           break;
-          case 2:
-            if (upperPrompt == true) {
-              password += getRandUpper();
-            }
-            break;
-            case 3:
-              if (numberPrompt == true) {
-                password += getRandNumber();
-              }
-              break;
-              case 0:
-                if (symbolPrompt == true) {
-                  password += getRandSymbol();
-                }
-                break;
-                default:
-                  console.log("error");
-              ]
-          
-    
+        case 2:
+          if (upper == true) {
+            password += getRandUpper();
           }
-        
+          break;
+        case 3:
+          if (number == true) {
+            password += getRandNumber();
+          }
+          break;
+        case 0:
+          if (symbol == true) {
+            password += getRandSymbol();
+          }
+          break;
+        default:
+          console.log("error");
       }
-      
-
     }
- 
+  }
+  return password;
+}
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
