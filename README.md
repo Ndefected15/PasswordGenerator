@@ -12,9 +12,9 @@
 
 ## Website
 
-- https://ndefected15.github.io/Challenge-2-Portfolio/
+- https://ndefected15.github.io/PasswordGenerator/
 
-![alt text](https://github.com/Ndefected15/Challenge-2-Portfolio/blob/main/assets/images/screenshot.jpg?raw=true)
+![alt text](https://github.com/Ndefected15/PasswordGenerator/blob/main/assets/screenshot.jpg?raw=true)
 
 ## Contribution
 - Created by Nicholas Defex
